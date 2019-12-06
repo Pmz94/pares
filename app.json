@@ -1,0 +1,37 @@
+{
+	"expo": {
+		"name": "Pares",
+		"slug": "pares",
+		"description": "Un simple juego de Pares",
+		"privacy": "public",
+		"owner": "pmz94",
+		"sdkVersion": "35.0.0",
+		"platforms": [
+			"ios",
+			"android",
+			"web"
+		],
+		"version": "1.0.0",
+		"orientation": "portrait",
+		"primaryColor": "#008CFA",
+		"icon": "./assets/img/icon.png",
+		"splash": {
+			"backgroundColor": "#ffffff",
+			"resizeMode": "cover",
+			"image": "./assets/img/splash.png"
+		},
+		"updates": {
+			"fallbackToCacheTimeout": 0
+		},
+		"assetBundlePatterns": [
+			"assets/img/*"
+		],
+		"ios": {
+			"bundleIdentifier": "com.csweb.pares",
+			"supportsTablet": true
+		},
+		"android": {
+			"package": "com.csweb.pares"
+		}
+	}
+}
