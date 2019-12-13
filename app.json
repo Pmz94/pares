@@ -5,7 +5,7 @@
 		"description": "Un simple juego de Pares",
 		"privacy": "public",
 		"owner": "pmz94",
-		"sdkVersion": "35.0.0",
+		"sdkVersion": "36.0.0",
 		"platforms": [
 			"ios",
 			"android",
