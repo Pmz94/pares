@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button, StyleSheet, View, Alert, Text } from 'react-native'
-import { Entypo, FontAwesome, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons'
+import { Entypo, FontAwesome, FontAwesome5, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons'
 
 import Header from './components/Header'
 import Card from './components/Card'
@@ -17,6 +17,7 @@ export default class App extends React.Component {
 		// icon sources
 		let sources = {
 			'fontawesome': FontAwesome,
+			'fontawesome5': FontAwesome5,
 			'entypo': Entypo,
 			'ionicons': Ionicons,
 			'material-comunity': MaterialCommunityIcons,
@@ -24,8 +25,8 @@ export default class App extends React.Component {
 
 		// the unique icons to be used
 		let cards = [
-			{ src: 'fontawesome', name: 'apple', color: '#000000' },
-			{ src: 'fontawesome', name: 'android', color: '#a5c63b' },
+			{ src: 'fontawesome5', name: 'apple', color: '#000000' },
+			{ src: 'fontawesome5', name: 'android', color: '#a5c63b' },
 			{ src: 'fontawesome', name: 'facebook-square', color: '#3b5998' },
 			{ src: 'fontawesome', name: 'twitter', color: '#1da1f2' },
 			{ src: 'fontawesome', name: 'instagram', color: '#da2e82' },
