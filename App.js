@@ -1,8 +1,8 @@
 import React from 'react'
-import { Button, StyleSheet, View, Alert, Text } from 'react-native'
+import { Button, StyleSheet, View, Alert, Text, SafeAreaView, StatusBar } from 'react-native'
+import Constants from 'expo-constants'
 import { Entypo, FontAwesome, FontAwesome5, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons'
 
-import Header from './components/Header'
 import Card from './components/Card'
 
 export default class App extends React.Component {
@@ -64,12 +64,9 @@ export default class App extends React.Component {
 
 	renderRows() {
 		let contents = this.getRowContents(this.state.cards);
-
-		return contents.map((cards, i) => {
-			return (
-				<View key={i} style={styles.row}>{this.renderCards(cards)}</View>
-			);
-		});
+		return contents.map((cards, i) => (
+			<View key={i} style={styles.row}>{this.renderCards(cards)}</View>
+		));
 	}
 
 	getRowContents(cards) {
@@ -94,18 +91,16 @@ export default class App extends React.Component {
 	}
 
 	renderCards(cards) {
-		return cards.map((card, i) => {
-			return (
-				<Card
-					key={i}
-					src={card.src}
-					name={card.name}
-					color={card.color}
-					is_open={card.is_open}
-					clickCard={this.clickCard.bind(this, card.id)}
-				/>
-			);
-		});
+		return cards.map((card, i) => (
+			<Card
+				key={i}
+				src={card.src}
+				name={card.name}
+				color={card.color}
+				is_open={card.is_open}
+				clickCard={this.clickCard.bind(this, card.id)}
+			/>
+		));
 	}
 
 	clickCard(id) {
@@ -153,8 +148,7 @@ export default class App extends React.Component {
 	}
 
 	checkPoints(score) {
-		let { cards } = this.state;
-		if(score === (cards.length / 2)) {
+		if(score === (this.state.cards.length / 2)) {
 			Alert.alert('Ganaste!', 'Empieza de nuevo', [{ text: 'Aceptar', onPress: this.resetCards }]);
 		}
 	}
@@ -179,18 +173,24 @@ export default class App extends React.Component {
 
 	render() {
 		return (
-			<View style={styles.container}>
-				<Header/>
-				<View style={styles.body}>{this.renderRows.call(this)}</View>
+			<SafeAreaView style={{ flex: 1 }}>
+				<View style={styles.container}>
+					<View style={styles.header}>
+						<StatusBar barStyle="light-content"/>
+						<Text style={styles.header_text}>Pares</Text>
+					</View>
 
-				<View style={styles.score_container}>
-					<Text style={styles.score}>Puntos: {this.state.score}</Text>
-				</View>
+					<View style={styles.body}>{this.renderRows.call(this)}</View>
 
-				<View style={styles.button_container}>
-					<Button onPress={this.resetCards} title="Reiniciar" color="#008cfa"/>
+					<View style={styles.score_container}>
+						<Text style={styles.score}>Puntos: {this.state.score}</Text>
+					</View>
+
+					<View style={styles.button_container}>
+						<Button onPress={this.resetCards} title="Reiniciar" color="#008cfa"/>
+					</View>
 				</View>
-			</View>
+			</SafeAreaView>
 		);
 	}
 }
@@ -200,6 +200,18 @@ const styles = StyleSheet.create({
 		flex: 1,
 		alignSelf: 'stretch',
 		backgroundColor: '#fff'
+	},
+	header: {
+		flex: 1,
+		justifyContent: 'center',
+		backgroundColor: '#008cfa'
+	},
+	header_text: {
+		color: '#fff',
+		fontWeight: 'bold',
+		fontSize: 18,
+		textAlign: 'center',
+		paddingTop: Constants.statusBarHeight
 	},
 	body: {
 		flex: 7,
@@ -217,7 +229,7 @@ const styles = StyleSheet.create({
 		borderColor: '#f00'
 	},
 	score: {
-		fontSize: 25,
+		fontSize: 24,
 		fontWeight: 'bold'
 	},
 	button_container: {

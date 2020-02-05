@@ -2,14 +2,15 @@
 	"expo": {
 		"name": "Pares",
 		"slug": "pares",
+		"scheme": "pares",
 		"description": "Un simple juego de Pares",
+		"githubUrl": "https://github.com/Pmz94/pares",
 		"privacy": "public",
 		"owner": "pmz94",
 		"sdkVersion": "36.0.0",
 		"platforms": [
 			"ios",
-			"android",
-			"web"
+			"android"
 		],
 		"version": "1.0.0",
 		"orientation": "portrait",
